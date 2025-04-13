@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/NESRIN SCHOL.png">
+    <title>Nesrin School</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <a href="S">
+            </a>
+        </div>
+        
+
+        <div class="contentdd">
+            <a href="https://api.whatsapp.com/send/?phone=212664648455&text&type=phone_number&app_absent=0" target="_blank"><i class="ri-whatsapp-line"></i></a>
+            <a href="https://www.instagram.com/nisrinegermanschool?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank"><i class="ri-instagram-line"></i></a>
+            <a href="https://www.facebook.com/people/Nisrine-School-Acad%C3%A9mie-Polyvalente-Infirmier-H%C3%B4tellerie-et-Allemand/100064126113056/" target="_blank"><i class="ri-facebook-line"></i></a>
+            <a href="https://www.google.com/maps/place/NISRINE+SCHOOL/@34.022444,-5.0063725,17z/data=!3m1!4b1!4m6!3m5!1s0xd9f8bb273463f77:0x467ae6cc14a093d2!8m2!3d34.022444!4d-5.0063725!16s%2Fg%2F11y5qclk0r?entry=ttu&g_ep=EgoyMDI1MDIwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="ri-map-pin-line"></i></a>
+        </div>
+    </nav>
+   
+    
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h1 class="fade-in">مرحباً بكم في مدرسة نسرين لتعليم الألمانية</h1>
+          <p class="slide-up">ابدأ رحلتك اليوم، وكن أنتَ قصة النجاح القادمة في ألمانيا!</p>
+        </div>
+    </header>
+   
+    
+            <!DOCTYPE html>
+            <html lang="ar">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>مرحباً بكم في مدرسة نسرين الألمانية</title>
+                <style>
+              
+                    .welcome-text {
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="welcome-text">
+               
+        </div>
+        <div class="nav-logos">
+            <a href="S">
+
+    
+           </a>
+        </div>
+    </header>
+
+
+
+
+    <!DOCTYPE html>
+    <html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>تأثير الجسيمات مع الثلوج</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <style>
+      
+    
+            canvas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        </style>
+        
+    </head>
+    <body>
+    
+        <!-- إضافة الشعار -->
+    
+        <script>
+            let scene = new THREE.Scene();
+            let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            let renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+    
+            // إعداد الجسيمات (النجوم)
+            let particlesGeometry = new THREE.BufferGeometry();
+            let particlesCount = 0; // زيادة عدد الجسيمات
+            let positions = new Float32Array(particlesCount * 3);
+            let colors = new Float32Array(particlesCount * 3);
+    
+            for (let i = 0; i < particlesCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 1000;
+                colors[i] = Math.random();
+            }
+    
+            particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+            particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    
+            let particlesMaterial = new THREE.PointsMaterial({
+                size: 2,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8
+            });
+    
+            let particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+    
+            // إعداد الجسيمات (الثلوج)
+            let snowGeometry = new THREE.BufferGeometry();
+            let snowCount = 300; // زيادة عدد الجسيمات
+            let snowPositions = new Float32Array(snowCount * 3);
+    
+            for (let i = 0; i < snowCount * 3; i++) {
+                snowPositions[i] = (Math.random() - 0.5) * 1000;
+            }
+    
+            snowGeometry.setAttribute("position", new THREE.BufferAttribute(snowPositions, 3));
+    
+            let snowMaterial = new THREE.PointsMaterial({
+                color: 0xffffff, // لون الثلج أبيض
+                size: 1.5,
+                transparent: true,
+                opacity: 0.8
+            });
+    
+            let snowMesh = new THREE.Points(snowGeometry, snowMaterial);
+            scene.add(snowMesh);
+    
+            camera.position.z = 5;
+    
+            function animateParticles() {
+                particlesMesh.rotation.y += 0.001;
+                particlesMesh.rotation.x += 0.001;
+    
+                let snowPositions = snowGeometry.attributes.position.array;
+                for (let i = 1; i < snowPositions.length; i += 3) {
+                    snowPositions[i] -= 2; // حركة الثلوج للأسفل
+                    if (snowPositions[i] < -500) snowPositions[i] = 500; // إعادة تعيين الموضع للأعلى
+                }
+                snowGeometry.attributes.position.needsUpdate = true;
+    
+                renderer.render(scene, camera);
+                requestAnimationFrame(animateParticles);
+            }
+    
+            animateParticles();
+    
+      
+        </script>
+    
+    </body>
+    </html>
+
+
+   
+    <!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>خلفية متساقطة لشعار نسرين</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #ccff00 0%, #000 90%);
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* الحاوية في الخلفية */
+    .background-logo-fall {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0; /* تأكد أنها بالخلفية */
+      overflow: hidden;
+    }
+
+    .logo-fall {
+      position: absolute;
+      top: -50px;
+      width: 40px;
+      height: auto;
+      opacity: 0.07;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- حاوية الخلفية للشعار المتساقط -->
+  <div class="background-logo-fall" id="background-logo-fall"></div>
+
+  <!-- المحتوى الأمامي -->
+   </header>
+
+  <script>
+    const container = document.getElementById('background-logo-fall');
+
+    for (let i = 0; i < 40; i++) {
+      const flake = document.createElement('img');
+      flake.src = 'images/NESRIN SCHOL.png'; // تأكد من وجود الصورة في هذا المسار
+      flake.className = 'logo-fall';
+
+      // إعدادات عشوائية
+      const left = Math.random() * 100; // من 0 إلى 100%
+      const duration = 8 + Math.random() * 7; // من 8 إلى 15 ثانية
+      const delay = Math.random() * 5; // من 0 إلى 5 ثوانٍ
+      const size = 20 + Math.random() * 30; // حجم من 20 إلى 50 بكسل
+
+      flake.style.left = `${left}%`;
+      flake.style.animationDuration = `${duration}s`;
+      flake.style.animationDelay = `${delay}s`;
+      flake.style.width = `${size}px`;
+
+      container.appendChild(flake);
+    }
+  </script>
+
+</body>
+</html>
+
+
+    <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأثير الجسيمات مع الثلوج</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            width: 150px;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- إضافة الشعار -->
+    <img id="logo" src="images/NESRIN SCHOL.png" alt="Logo">
+
+  
+    <!-- نموذج التسجيل -->
+    <section class="container">
+        <div class="card">
+            <div class="content">
+                
+                <h2 class="header">💡 املأ البيانات أدناه وكن جزءًا من مستقبل مشرق! </h2>
+                <h2>📜 تسجيل موعد في المؤسسة </h2>
+                
+                <form action="https://formspree.io/f/mdkalypp" method="POST">
+                    <div class="form-group">
+                        <label for="firstName">🚹 الاسم:</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="أدخل اسمك هنا...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">🚹 النسب:</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="أدخل كنيتك هنا...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">📞 رقم الهاتف:</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="مثال: *******06">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">📩 البريد الإلكتروني:</label>
+                        <input type="email" id="email" name="email" required placeholder="example@Gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">⏳ العمر:</label>
+                        <input type="number" id="age" name="age" required placeholder="مثال: 60">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diploma">📜 شهادة الدبلوم:</label>
+                        <input type="text" id="diploma" name="diploma" required placeholder="مثال: هندسة برمجيات">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="graduationYear">🎓📖 مستوى السنة الدراسية:</label>
+                        <input type="text" id="graduationYear" name="graduationYear" required placeholder="مثال: الباكالوريا أو الثالثة إعدادي">
+                    </div>
+
+                    <button type="submit">التسجيل الآن</button>
+
+
+                </form>
+            </div>   
+        </div>
+    </section>
+
+    <!-- باقي المحتوى -->
+
+
+
+    <!DOCTYPE html>
+    <html lang="ar">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>قائمة الفيديوهات</title>
+        <style>
+         
+            .video-container {
+                position: relative;
+                margin-bottom: 20px;
+            }
+            video {
+                width: 75%;
+                height: auto;
+                border-radius: 15px;
+            }
+            .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 50px;
+                color: white;
+                cursor: pointer;
+                opacity: 0.8;
+            }
+            .play-button:hover {
+                opacity: 5;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <h2>📺 قائمة الفيديوهات</h2>
+        
+        <div class="video-container" onclick="togglePlay('video1')">
+            <video id="video1" controls>
+                <source src="kk.mp4" type="video/mp4">
+            </video>
+            <div class="play-button">▶</div>
+        </div>
+    
+        <div class="video-container" onclick="togglePlay('video2')">
+            <video id="video2" controls>
+                <source src="kk.mp4" type="video/mp4">
+            </video>
+            <div class="play-button">▶</div>
+        </div>
+    
+        <script>
+            function togglePlay(videoId) {
+                var video = document.getElementById(videoId);
+                var playButton = video.parentElement.querySelector('.play-button');
+                if (video.paused) {
+                    video.play();
+                    playButton.style.display = 'none';
+                } else {
+                    video.pause();
+                    playButton.style.display = 'block';
+                }
+            }
+        </script>
+    
+    </body>
+    </html>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+ 
+    
+  
+      
+    <section class="container">
+        <h2 class="header"> الخدمات المقدمة من طرف مؤسسة نسرين</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="ri-school-line"></i></span>
+                <h4>تدريس اللغة الألمانية</h4>
+              
+
+            
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="level">A1</div>
+                        <div class="level">A2</div>
+                        <div class="level">B1</div>
+                        <div class="level">B2</div>
+                        <div class="level">C1</div>
+                    </div>
+                </body>
+                </html>
+                <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجربة اللون</title>
+
+</head>
+<body>
+ 
+</body>
+</html>
+
+                
+                
+            </div>
+            <div class="card">
+                <span><i class="ri-shake-hands-line"></i></span>
+
+                <h4>تحضير الملفات المطلوبة</h4>
+
+                <p>
+                    
+                  تحضير ملف السفارة و تحضير ملف الفيزة والبحت عن عمل او الدراسة في الجامعة</p>     
+                      </div>
+            <div class="card">
+                <span><i class="ri-hotel-fill"></i></span>
+              
+            <h4>التكوينات الأكثر طلبا</h4>
+            <p>
+                تدريس التكوينات الأكثر طلبا في سوق الشغل الألمانية   </p>
+                  </div>
+            <div class="card">
+                <span><i class="ri-draft-fill"></i></span>
+                <h4>ترجمة الوثائق و عقد التكوين المهني</h4>
+                <p>
+                    ترجمة الوثائق من طرف مترجمين معتمدين وفي أقل مدة ممكنة, وأيضا
+                    ترجمة عقود التكوين المهني وعقود العمل للذهاب الى ألمانيا                             </p>
+            </div>
+
+       
+      </div>
+            <h2 class="header"> تعريف بسيط عن التكوينات الأكثر طلبا في سوق الشغل الألمانية</h2>
+            <div class="features">
+                <div class="card">
+
+                    <span><i class="ri-shopping-bag-fill"></i></span> 
+                    <h4>تعريف بسيط لاختصاص التجارة</h4>
+                    <p>شراء وبيع الأسهم والعملات والسندات والسلع والأوراق المالية الأخرى خلال فترة قصيرة لتحقيق الأرباح</p>
+                </div>
+                
+                <div class="card">
+                    <span><i class="ri-restaurant-2-fill"></i></span>
+    
+                    <h4>تعريف بسيط لي اختصاص الطبخ</h4>
+    
+                    <p>
+                    تعد مهنة “الشيف” أو الطباخ من أبرز المهن المطلوبة في ألمانيا، حيث تحتاج العديد من المطاعم والفنادق ودور الرعايا هناك إلى تلك المهنة، وفق ما أقره بيان لمكتب العمل الألماني                 </p>
+    
+                </div>
+                <div class="card">
+                    <span><i class="ri-heart-pulse-line"></i></span>
+                  
+                <h4>تعريف بسيط لي التمريض</h4>
+                <p>
+                    تشمل التمريض تعزيز الصحة والوقاية من المرض ورعاية المرضى والمعاقين والمحتضرين. كما تعد الدعوة، وتعزيز البيئة الآمنة، والبحث، والمشاركة في صياغة السياسة الصحية وإدارة أنظمة المرضى والصحة، والتعليم من الأدوار الرئيسية للتمريض </p>
+            </div>
+                <div class="card">
+                    <span><i class="ri-luggage-cart-fill"></i></span>
+                    <h4>تعريف بسيط لي اختصاص الفندقة</h4>
+                    <p>
+                     هو التخصص الذي يهتم بالترحيب بالمسافرين، وتقديم لهم الوسائل الترفيهية التي تساعدهم على التعرّف على الدولة، وتعد صناعة الضيافة والسياحة قطاعًا واسعًا يشمل جميع الأنشطة الاقتصادية التي تساهم بشكل مباشر أو غير مباشر في السفر والسياحة أو تعتمد عليها                </p>
+                </div>
+    
+           
+          </div>
+          
+    
+                
+
+    <footer class="container">
+       
+        <div class="column">
+          
+            <p>
+                مدرسة نسرين ترحب بكم وهي تساعد جميع التلاميد داخل المؤسسة لتحقيق هدف التلميذ وتغيير مستقبله وهي خيار جيد لك وللجميع وهي مفتوحة لكافة المغاربة             </p>
+           
+            <div class="socials">
+                <a href="https://api.whatsapp.com/send/?phone=212664648455&text&type=phone_number&app_absent=0" target="_blank"><i class="ri-whatsapp-line"></i></a>
+                <a href="https://www.instagram.com/nisrinegermanschool?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D" target="_blank"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.facebook.com/people/Nisrine-School-Acad%C3%A9mie-Polyvalente-Infirmier-H%C3%B4tellerie-et-Allemand/100064126113056/" target="_blank"><i class="ri-facebook-line"></i></a>
+                <a href="https://www.google.com/maps/place/NISRINE+SCHOOL/@34.022444,-5.0063725,17z/data=!3m1!4b1!4m6!3m5!1s0xd9f8bb273463f77:0x467ae6cc14a093d2!8m2!3d34.022444!4d-5.0063725!16s%2Fg%2F11y5qclk0r?entry=ttu&g_ep=EgoyMDI1MDIwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="ri-map-pin-line"></i></a>
+
+            </div>
+      
+    </footer>
+    <div class="copyright">
+        Copyright © 2025 Nisrine School. All Rights Reserved.
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
