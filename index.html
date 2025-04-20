@@ -26,7 +26,7 @@
             <a href="https://www.google.com/maps/place/NISRINE+SCHOOL/@34.022444,-5.0063725,17z/data=!3m1!4b1!4m6!3m5!1s0xd9f8bb273463f77:0x467ae6cc14a093d2!8m2!3d34.022444!4d-5.0063725!16s%2Fg%2F11y5qclk0r?entry=ttu&g_ep=EgoyMDI1MDIwNS4xIKXMDSoASAFQAw%3D%3D" target="_blank"><i class="ri-map-pin-line"></i></a>
         </div>
 
-        
+        <img id="logo" src="images/NESRIN SCHOL.png" alt="Logo">
     </nav>
    
     
@@ -79,162 +79,195 @@
     <!DOCTYPE html>
     <html lang="ar">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>تأثير الجسيمات مع الثلوج</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <style>
-      
-    
-            canvas {
-                position: fixed;
-                top: 0;
-                left: 0;
-                z-index: -1;
-            }
-        </style>
-        
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>ثلوج متساقطة وجسيمات متوهجة</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+      <style>
+        body {
+          margin: 0;
+          overflow: hidden;
+          background-color: #0d0d0d;
+        }
+        canvas {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: -1;
+        }
+      </style>
     </head>
     <body>
     
-        <!-- إضافة الشعار -->
+    <script>
+      // إعداد المشهد والكاميرا والمُحرك
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+      camera.position.z = 100;
     
-        <script>
-            let scene = new THREE.Scene();
-            let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            let renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.body.appendChild(renderer.domElement);
+      const renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
     
-            // إعداد الجسيمات (النجوم)
-            let particlesGeometry = new THREE.BufferGeometry();
-            let particlesCount = 0; // زيادة عدد الجسيمات
-            let positions = new Float32Array(particlesCount * 3);
-            let colors = new Float32Array(particlesCount * 3);
+      // إنشاء الجسيمات المتوهجة (نجوم)
+      const starCount = 800;
+      const starGeometry = new THREE.BufferGeometry();
+      const starPositions = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount * 3; i++) {
+        starPositions[i] = (Math.random() - 0.5) * 1000;
+      }
+      starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
     
-            for (let i = 0; i < particlesCount * 3; i++) {
-                positions[i] = (Math.random() - 0.5) * 1000;
-                colors[i] = Math.random();
-            }
+      const starMaterial = new THREE.PointsMaterial({
+        color: 0xaaaaaa,
+        size: 1.2,
+        transparent: true,
+        opacity: 0.6
+      });
     
-            particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-            particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+      const stars = new THREE.Points(starGeometry, starMaterial);
+      scene.add(stars);
     
-            let particlesMaterial = new THREE.PointsMaterial({
-                size: 2,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.8
-            });
+      // إنشاء الجسيمات (ثلج)
+      const snowCount = 500;
+      const snowGeometry = new THREE.BufferGeometry();
+      const snowPositions = new Float32Array(snowCount * 3);
+      for (let i = 0; i < snowCount * 3; i++) {
+        snowPositions[i] = (Math.random() - 0.5) * 1000;
+      }
+      snowGeometry.setAttribute('position', new THREE.BufferAttribute(snowPositions, 3));
     
-            let particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
+      const snowMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 1.5,
+        transparent: true,
+        opacity: 0.9
+      });
     
-            // إعداد الجسيمات (الثلوج)
-            let snowGeometry = new THREE.BufferGeometry();
-            let snowCount = 300; // زيادة عدد الجسيمات
-            let snowPositions = new Float32Array(snowCount * 3);
+      const snow = new THREE.Points(snowGeometry, snowMaterial);
+      scene.add(snow);
     
-            for (let i = 0; i < snowCount * 3; i++) {
-                snowPositions[i] = (Math.random() - 0.5) * 1000;
-            }
+      // تحديث مستمر للحركة
+      function animate() {
+        requestAnimationFrame(animate);
     
-            snowGeometry.setAttribute("position", new THREE.BufferAttribute(snowPositions, 3));
+        // دوران النجوم بشكل خفيف
+        stars.rotation.y += 0.0005;
     
-            let snowMaterial = new THREE.PointsMaterial({
-                color: 0xffffff, // لون الثلج أبيض
-                size: 1.5,
-                transparent: true,
-                opacity: 0.8
-            });
+        // حركة الثلوج للأسفل
+        const snowArray = snowGeometry.attributes.position.array;
+        for (let i = 1; i < snowArray.length; i += 3) {
+          snowArray[i] -= 0.8;
+          if (snowArray[i] < -300) snowArray[i] = 300;
+        }
+        snowGeometry.attributes.position.needsUpdate = true;
     
-            let snowMesh = new THREE.Points(snowGeometry, snowMaterial);
-            scene.add(snowMesh);
+        renderer.render(scene, camera);
+      }
     
-            camera.position.z = 5;
+      animate();
     
-            function animateParticles() {
-                particlesMesh.rotation.y += 0.001;
-                particlesMesh.rotation.x += 0.001;
-    
-                let snowPositions = snowGeometry.attributes.position.array;
-                for (let i = 1; i < snowPositions.length; i += 3) {
-                    snowPositions[i] -= 2; // حركة الثلوج للأسفل
-                    if (snowPositions[i] < -500) snowPositions[i] = 500; // إعادة تعيين الموضع للأعلى
-                }
-                snowGeometry.attributes.position.needsUpdate = true;
-    
-                renderer.render(scene, camera);
-                requestAnimationFrame(animateParticles);
-            }
-    
-            animateParticles();
-    
-      
-        </script>
+      // استجابة لتغيير حجم النافذة
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
     
     </body>
     </html>
+    
 
 
-   
+
+
+
     <!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8">
-  <title>خلفية متساقطة لشعار نسرين</title>
-  <style>
-  
+    <html lang="ar">
+    <head>
+      <meta charset="UTF-8">
+      <title>شعارات نسرين المتساقطة</title>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background: #0b0b0b;
+        }
+    
+        .background-logo-fall {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: -1;
+        }
+    
+        .logo-fall {
+          position: absolute;
+          top: -60px;
+          opacity: 0;
+          animation-name: fall;
+          animation-timing-function: ease-in;
+          animation-iteration-count: infinite;
+        }
+    
+        @keyframes fall {
+          0% {
+            transform: translateY(-60px) rotate(0deg);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(110vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+      </style>
+    </head>
+    <body>
+    
+      <!-- حاوية الشعارات -->
+      <div class="background-logo-fall" id="background-logo-fall"></div>
+    
+      <script>
+        const container = document.getElementById('background-logo-fall');
+        const logoSrc = 'images/NESRIN SCHOL.png'; // تأكد من صحة المسار
+    
+        for (let i = 0; i < 40; i++) {
+          const flake = document.createElement('img');
+          flake.src = logoSrc;
+          flake.className = 'logo-fall';
+    
+          const left = Math.random() * 500;
+          const duration = 6 + Math.random() * 6; // من 6 إلى 12 ثانية
+          const delay = Math.random() * 5;
+          const size = 30 + Math.random() * 10;
+    
+          flake.style.left = `${left}%`;
+          flake.style.animationDuration = `${duration}s`;
+          flake.style.animationDelay = `${delay}s`;
+          flake.style.width = `${size}px`;
+          flake.style.height = 'auto';
+    
+          container.appendChild(flake);
+        }
+      </script>
+    
+    </body>
+    </html>
+    
 
-  
 
 
-    @keyframes fall {
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 5.1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
-</head>
-<body>
 
-  <!-- حاوية الخلفية للشعار المتساقط -->
-  <div class="background-logo-fall" id="background-logo-fall"></div>
 
-  <!-- المحتوى الأمامي -->
-   </header>
-
-  <script>
-    const container = document.getElementById('background-logo-fall');
-
-    for (let i = 0; i < 40; i++) {
-      const flake = document.createElement('img');
-      flake.src = 'images/NESRIN SCHOL.png'; // تأكد من وجود الصورة في هذا المسار
-      flake.className = 'logo-fall';
-
-      // إعدادات عشوائية
-      const left = Math.random() * 100; // من 0 إلى 100%
-      const duration = 8 + Math.random() * 7; // من 8 إلى 15 ثانية
-      const delay = Math.random() * 5; // من 0 إلى 5 ثوانٍ
-      const size = 20 + Math.random() * 30; // حجم من 20 إلى 50 بكسل
-
-      flake.style.left = `${left}%`;
-      flake.style.animationDuration = `${duration}s`;
-      flake.style.animationDelay = `${delay}s`;
-      flake.style.width = `${size}px`;
-
-      container.appendChild(flake);
-    }
-  </script>
-
-</body>
-</html>
 
 
     <!DOCTYPE html>
@@ -271,8 +304,8 @@
 </head>
 <body>
 
-    <!-- إضافة الشعار -->
-    <img id="logo" src="images/NESRIN SCHOL.png" alt="Logo">
+    
+   
  
 
 
