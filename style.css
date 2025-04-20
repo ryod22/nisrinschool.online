@@ -7,7 +7,66 @@
     border: none;
     box-sizing: border-box;
 }
+header {
+    position: relative;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  
 
+
+
+  .register-button {
+    display: inline-block;
+    width: 280px; /* 👈 هذا هو التعريض (العرض) */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .register-button:hover {
+    background-color: #45a049;
+  }
+  
+
+
+  
+  .register-button {
+    
+    position: absolute;
+    top: -50px;
+    right: 520px;
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* التأثير عند تمرير المؤشر */
+  .register-button:hover {
+    background-color: #45a054;
+  }
+  
+  /* دعم الهواتف */
+  @media (max-width: 600px) {
+    .register-button {
+      font-size: 14px;
+      padding: 8px 14px;
+      top: -50px;
+      right: 58px;
+    }
+  }
+  
 .background-logo-fall {
     position: relative;
     width: 100%;
@@ -58,11 +117,7 @@
     top: -50px;
     left: 10%;
   }
-  .blur-effect:nth-child(2) {
-    bottom: -50px;
-    right: 15%;
-    background: #6bc1ff;
-  }
+ 
   
   h1 {
     font-size: 2.8rem;
