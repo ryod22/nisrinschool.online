@@ -58,14 +58,17 @@ header {
   }
   
   /* دعم الهواتف */
-  @media (max-width: 600px) {
+
+@media (max-width: 600px) {
     .register-button {
       font-size: 14px;
       padding: 8px 14px;
+  
       top: -50px;
       right: 48px;
     }
   }
+  
   
 .background-logo-fall {
     position: relative;
