@@ -14,8 +14,13 @@ header {
     box-sizing: border-box;
     
   }
-  
 
+
+#logo {
+    max-width: 300px;
+    max-height: 200px;
+    filter: drop-shadow(0 0 15px rgba(217, 255, 0, 0.7));
+}
 
 
   .register-button {
