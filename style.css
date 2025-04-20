@@ -42,7 +42,7 @@ header {
     
     position: absolute;
     top: -50px;
-    right: 520px;
+    right: 320px;
     background-color: #ff0000;
     color: white;
     padding: 10px 18px;
@@ -62,7 +62,7 @@ header {
   }
   
   /* دعم الهواتف */
-@media (max-width: 600px) {
+   @media (max-width: 600px) {
     .register-button {
       font-size: 14px;
       padding: 8px 14px;
@@ -72,26 +72,76 @@ header {
       position: relative; /* أو احذفها لو لم تكن ضرورية */
       top: 0;
       right: 0;
+      
     }
   }
-  
-  
-  
-  
-.background-logo-fall {
+  .register-button {
+    
     position: relative;
-    width: 100%;
-    height: 100vh;
+    display: inline-block;
+    background: linear-gradient(45deg, #f59e0b, #fbbf24);
+    color: #1f2937;
+    font-weight: bold;
+    font-size: 1.2rem;
     overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
   }
   
+  .register-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+    color: #111827;
+  }
+  
+  .hover-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.9s;
+  }
+  
+  .register-button:hover .hover-effect {
+    left: 100%;
+  }
+  
+  
+
+
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+  }
+
+  .background-logo-fall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
   .logo-fall {
     position: absolute;
-    top: -50px; /* يبدأ من خارج الشاشة */
-    animation: fall 10s infinite linear;
-    opacity: 0.8; /* خفة للشفافية */
-    filter: brightness(1.2); /* زيادة السطوع */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* إضافة ظل للشعار */
+    top: -60px;
+    opacity: 0.5;
+    filter: brightness(1.2) contrast(1.75);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
   
   @keyframes fall {
@@ -99,6 +149,7 @@ header {
       transform: translateY(100vh);
     }
   }
+
   
 /* CSS */
 .hero-section {
@@ -560,10 +611,10 @@ nav{
 }
 .blur {
     position: absolute;
-    box-shadow: 0 0 100px 30px #eeff00;
+    box-shadow: 0 0 100px 30px #e5ff00;
     z-index: -100;
     
-    top: -100px; /* إزاحة إلى الأعلى */
+    top: -135px; /* إزاحة إلى الأعلى */
     right: 65px;
     /* أو بديل للتحكم الديناميكي */
     transform: translateY(-50px);
@@ -653,19 +704,51 @@ section .header{
     
 }
 
-.features .card{
-    background-color: #27272a;
-    padding: 1rem;
-    border: 2px solid transparent;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-    
+.features .card {
+    background: linear-gradient(145deg, #0e0e0e, #262626);
+    padding: 1.8rem;
+    border: 1px solid #ff0000;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.features .card:hover{
-    background-color: #323232;
-    border-color: #ff0000;
-    
+.features .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff0000, #ffcc00);
+}
+
+.features .card:hover {
+    background: linear-gradient(145deg, #222222, #0f0f0f);
+    border-color: #ffcc00;
+    box-shadow: 
+        0 8px 30px rgba(255, 208, 0, 0.2),
+        0 0 0 2px rgba(255, 204, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.features .card:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #ffcc00;
+    animation: borderGlow 2.5s infinite;
+}
+
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 5px #ffcc00; }
+    50% { box-shadow: 0 0 20px #ffcc00; }
+    100% { box-shadow: 0 0 5px #ffcc00; }
 }
 
 .features .card span{
@@ -853,7 +936,7 @@ footer .column .socials a{
 
 footer .column .socials a:hover{
     color: #eeff00;
-    background-color: #222422;
+    background-color: #000000;
     border-color: #fffb00;
 }
 .contentdd{
