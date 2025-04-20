@@ -284,62 +284,410 @@
     <!-- إضافة الشعار -->
     <img id="logo" src="images/NESRIN SCHOL.png" alt="Logo">
 
-  
-    <!-- نموذج التسجيل -->
-    <section class="container">
-        <div class="card">
-            <div class="content">
+   <!-- نموذج التسجيل -->
+   <section class="registration-section">
+    <div class="glowing-card">
+        <div class="card-content">
+            <div class="form-header">
+                <h2 class="main-title">💡 املأ البيانات أدناه وكن جزءًا من مستقبل مشرق!</h2>
+                <h3 class="sub-title">📜 تسجيل موعد في المؤسسة</h3>
+                <div class="animated-border"></div>
+            </div>
+            
+            <form class="modern-form" action="https://formspree.io/f/mdkalypp" method="POST">
+                <div class="form-row">
+                    <div class="form-group floating">
+                        <input type="text" id="firstName" name="firstName" required>
+                        <label for="firstName">🚹 الاسم الكامل</label>
+                        <i class="ri-user-3-line input-icon"></i>
+                        <div class="underline"></div>
+                    </div>
+                    
+                    <div class="form-group floating">
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="phone">📞 رقم الهاتف</label>
+                        <i class="ri-phone-line input-icon"></i>
+                        <div class="underline"></div>
+                    </div>
+                </div>
                 
-                <h2 class="header">💡 املأ البيانات أدناه وكن جزءًا من مستقبل مشرق! </h2>
-                <h2>📜 تسجيل موعد في المؤسسة </h2>
+                <div class="form-row">
+                    <div class="form-group floating">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">📩 البريد الإلكتروني</label>
+                        <i class="ri-mail-line input-icon"></i>
+                        <div class="underline"></div>
+                    </div>
+                    
+                    <div class="form-group floating">
+                        <input type="number" id="age" name="age" required>
+                        <label for="age">⏳ العمر</label>
+                        <i class="ri-calendar-line input-icon"></i>
+                        <div class="underline"></div>
+                    </div>
+                </div>
                 
-                <form action="https://formspree.io/f/mdkalypp" method="POST">
-                    <div class="form-group">
-                        <label for="firstName">🚹 الاسم:</label>
-                        <input type="text" id="firstName" name="firstName" required placeholder="أدخل اسمك هنا...">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lastName">🚹 النسب:</label>
-                        <input type="text" id="lastName" name="lastName" required placeholder="أدخل كنيتك هنا...">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">📞 رقم الهاتف:</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="مثال: *******06">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">📩 البريد الإلكتروني:</label>
-                        <input type="email" id="email" name="email" required placeholder="example@Gmail.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="age">⏳ العمر:</label>
-                        <input type="number" id="age" name="age" required placeholder="مثال: 60">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="diploma">📜 شهادة الدبلوم:</label>
-                        <input type="text" id="diploma" name="diploma" required placeholder="مثال: هندسة برمجيات">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="graduationYear">🎓📖 مستوى السنة الدراسية:</label>
-                        <input type="text" id="graduationYear" name="graduationYear" required placeholder="مثال: الباكالوريا أو الثالثة إعدادي">
-                    </div>
-
-                    <button type="submit">التسجيل الآن</button>
-
-
-                </form>
-            </div>   
+                <div class="form-group floating full-width">
+                    <input type="text" id="diploma" name="diploma" required>
+                    <label for="diploma">📜 الشهادة الأكاديمية</label>
+                    <i class="ri-graduation-cap-line input-icon"></i>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group floating full-width">
+                    <input type="text" id="graduationYear" name="graduationYear" required>
+                    <label for="graduationYear">🎓 المستوى الدراسي</label>
+                    <i class="ri-book-line input-icon"></i>
+                    <div class="underline"></div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>إرسال الطلب</span>
+                    <i class="ri-send-plane-fill send-icon"></i>
+                    <div class="btn-effect"></div>
+                </button>
+            </form>
         </div>
-    </section>
+        
+        <div class="glow-effect"></div>
+    </div>
+</section>
 
-    <!-- باقي المحتوى -->
+<style>
+/* أنماط عامة */
+.registration-section {
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* بطاقة الاستمارة */
+.glowing-card {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.glow-effect {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 200, 0, 0.3), transparent 70%);
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    animation: rotate-glow 15s linear infinite;
+}
+
+@keyframes rotate-glow {
+    0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+/* عناوين الاستمارة */
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.main-title {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.sub-title {
+    color: #ffd700;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.animated-border {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-border::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    animation: border-shine 3s infinite;
+}
+
+@keyframes border-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* نموذج الإدخال */
+.modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.floating {
+    position: relative;
+    height: 60px;
+}
+
+.floating input {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 1rem 0.5rem 2.5rem;
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.floating label {
+    position: absolute;
+    top: 50%;
+    right: 2.5rem;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.floating .input-icon {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 215, 0, 0.7);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #ff9800);
+    transition: all 0.3s ease;
+}
+
+/* تأثيرات حقول الإدخال */
+.floating input:focus ~ label,
+.floating input:valid ~ label {
+    top: 15px;
+    right: 1rem;
+    font-size: 0.8rem;
+    color: #ffd700;
+}
+
+.floating input:focus ~ .input-icon,
+.floating input:valid ~ .input-icon {
+    color: #ffd700;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.floating input:focus ~ .underline,
+.floating input:valid ~ .underline {
+    width: 100%;
+}
+
+/* زر الإرسال */
+.submit-btn {
+    position: relative;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #ff9800, #ffd700);
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.send-icon {
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover .send-icon {
+    transform: translateX(5px);
+}
+
+.btn-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    top: 0;
+    left: -100%;
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.submit-btn:hover .btn-effect {
+    left: 100%;
+}
+
+/* التكيف مع الهواتف */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .main-title {
+        font-size: 1.5rem;
+    }
+    
+    .sub-title {
+        font-size: 1.1rem;
+    }
+    
+    .glowing-card {
+        padding: 1.5rem;
+    }
+}
+</style>
+
+<!-- باقي المحتوى -->
 
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدرسة نسرين - تبديل الألوان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --card-bg: #0e0e0e;
+            --border-color: #ff3333;
+            --accent-color: #ffd700;
+            --social-bg: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f5f5f5;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --border-color: #dddddd;
+            --accent-color: #ff9800;
+            --social-bg: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Tajawal', sans-serif;
+            transition: all 0.5s ease;
+        }
+
+        /* زر تبديل الثيم */
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--social-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-switcher i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        /* تعديلات لبقية العناصر لتتكيف مع الثيم */
+        .glowing-card {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border-color: var(--border-color);
+        }
+
+        .floating input {
+            color: var(--text-color);
+            border-bottom-color: var(--border-color);
+        }
+
+        .floating label {
+            color: var(--text-color);
+        }
+
+        .socials a {
+            background: var(--social-bg);
+            color: var(--text-color);
+        }
+
+    </style>
+</head>
+
+
+
+    
+    </script>
+</body>
+</html>
 
     
           
