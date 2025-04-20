@@ -57,17 +57,22 @@ header {
     background-color: #45a054;
   }
   
-  /* دعم الهواتف */
 
+
+/* دعم الهواتف */
 @media (max-width: 600px) {
     .register-button {
       font-size: 14px;
       padding: 8px 14px;
   
-      top: -50px;
-      right: 48px;
+      display: block;
+      margin: 0 auto;
+      position: relative; /* أو احذفها لو لم تكن ضرورية */
+      top: 0;
+      right: 0;
     }
   }
+  
   
   
 .background-logo-fall {
