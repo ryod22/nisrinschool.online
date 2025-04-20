@@ -704,7 +704,52 @@ section .header{
     
 }
 
+.features .card {
+    background: linear-gradient(145deg, #0e0e0e, #262626);
+    padding: 1.8rem;
+    border: 1px solid #ff0000;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
 
+.features .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff0000, #ffcc00);
+}
+
+.features .card:hover {
+    background: linear-gradient(145deg, #222222, #0f0f0f);
+    border-color: #ffcc00;
+    box-shadow: 
+        0 8px 30px rgba(255, 208, 0, 0.2),
+        0 0 0 2px rgba(255, 204, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.features .card:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #ffcc00;
+    animation: borderGlow 2.5s infinite;
+}
+
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 5px #ffcc00; }
+    50% { box-shadow: 0 0 20px #ffcc00; }
+    100% { box-shadow: 0 0 5px #ffcc00; }
+}
 
 .features .card span{
     display: inline-block;
@@ -971,151 +1016,6 @@ footer .column > a:hover{
 
 
 
-/* أنماط أساسية للبطاقات */
-.features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  
-  .features .card {
-    position: relative;
-    background: linear-gradient(145deg, #111111, #222222);
-    border: 1px solid #ff3333;
-    border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.4s ease-out;
-    overflow: hidden;
-    z-index: 1;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* شريط التدرج العلوي */
-  .features .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, #ff3333, #ff9933);
-    transition: all 0.3s ease;
-  }
-  
-  /* تأثير الخلفية عند hover */
-  .features .card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: linear-gradient(135deg, rgba(255,153,51,0.1), rgba(255,204,0,0.05));
-    transition: all 0.4s ease;
-    z-index: -1;
-  }
-  
-  /* تأثيرات hover */
-  .features .card:hover {
-    transform: translateY(-8px);
-    border-color: #ffcc00;
-    box-shadow: 0 12px 30px rgba(255, 153, 51, 0.25);
-  }
-  
-  .features .card:hover::before {
-    height: 8px;
-    background: linear-gradient(90deg, #ff9933, #ffcc00);
-  }
-  
-  .features .card:hover::after {
-    height: 100%;
-  }
-  
-  /* محتوى البطاقة */
-  .card-content {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .features .card i {
-    font-size: 2.5rem;
-    color: #ffcc00;
-    margin-bottom: 1.5rem;
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
-  
-  .features .card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #fff;
-    transition: color 0.3s ease;
-  }
-  
-  .features .card p {
-    color: #ccc;
-    line-height: 1.6;
-    transition: color 0.3s ease;
-  }
-  
-  /* تأثيرات hover للمحتوى */
-  .features .card:hover i {
-    transform: scale(1.1);
-    color: #ff9933;
-  }
-  
-  .features .card:hover h3 {
-    color: #ffcc00;
-  }
-  
-  .features .card:hover p {
-    color: #fff;
-  }
-  
-  /* تأثير التوهج السفلي */
-  .glow-effect {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: #ffcc00;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .features .card:hover .glow-effect {
-    opacity: 1;
-    animation: borderGlow 2s infinite;
-  }
-  
-  @keyframes borderGlow {
-    0%, 100% { box-shadow: 0 0 5px #ffcc00; }
-    50% { box-shadow: 0 0 15px #ff9933; }
-  }
-  
-  /* التكيف مع الهواتف */
-  @media (max-width: 768px) {
-    .features {
-      grid-template-columns: 1fr;
-      padding: 1rem;
-      gap: 1.5rem;
-    }
-    
-    .features .card {
-      padding: 1.5rem;
-    }
-    
-    .features .card i {
-      font-size: 2rem;
-    }
-    
-    .features .card h3 {
-      font-size: 1.3rem;
-    }
-  }
+
 
 
