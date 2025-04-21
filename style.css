@@ -16,11 +16,7 @@ header {
   }
 
 
-#logo {
-    max-width: 300px;
-    max-height: 200px;
-    filter: drop-shadow(0 0 15px rgba(217, 255, 0, 0.7));
-}
+
 
 
   .register-button {
@@ -607,24 +603,7 @@ nav{
    
 }
 
-.blur {
-    position: absolute;
-    box-shadow: 0 0 100px 30px #eeff00;
-    z-index: -100;
-    left: 90px; /* إزاحة إلى اليسار */
-    /* بديل للتحكم الديناميكي */
-    transform: translateX(-50px);
-}
-.blur {
-    position: absolute;
-    box-shadow: 0 0 100px 30px #e5ff00;
-    z-index: -100;
-    
-    top: -135px; /* إزاحة إلى الأعلى */
-    right: 65px;
-    /* أو بديل للتحكم الديناميكي */
-    transform: translateY(-50px);
-}
+
 
 
 header{
